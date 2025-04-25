@@ -5,7 +5,7 @@ import { GraphQLClient } from "graphql-request";
 import { graphql } from "../gql"
 import { getContentstackEndpoints, getRegionForString } from "@timbenniks/contentstack-endpoints";
 
-const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as string)
+const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || "EU")
 const endpoints = getContentstackEndpoints(region, true)
 
 export const stack = contentstack.stack({
