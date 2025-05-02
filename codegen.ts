@@ -1,10 +1,10 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
-const apiKey = process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY || '***REMOVED***';
-const environment = process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || 'preview';
-const region = process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || 'EU'
+const apiKey = process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY;
+const environment = process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT;
+const region = process.env.NEXT_PUBLIC_CONTENTSTACK_REGION
 const baseURL = region === 'EU' ? 'eu-graphql.contentstack.com' : 'graphql.contentstack.com'
-const accessToken = process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN || '***REMOVED***'
+const accessToken = process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN
 
 const config: CodegenConfig = {
   schema: {
