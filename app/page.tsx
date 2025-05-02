@@ -1,5 +1,5 @@
 "use client";
-
+import DOMPurify from "dompurify";
 import Image from "next/image";
 import ContentstackLivePreview from "@contentstack/live-preview-utils";
 import { getPage, initLivePreview } from "@/lib/contentstack";
@@ -51,7 +51,9 @@ export default function Home() {
         {page?.rich_text ? (
           <div
             {...(page?.$ && page?.$.rich_text)}
-            dangerouslySetInnerHTML={{ __html: page?.rich_text }}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(page?.rich_text),
+            }}
           />
         ) : null}
 
@@ -95,7 +97,9 @@ export default function Home() {
                   {block.copy ? (
                     <div
                       {...(block?.$ && block?.$.copy)}
-                      dangerouslySetInnerHTML={{ __html: block.copy }}
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(block.copy),
+                      }}
                       className="prose"
                     />
                   ) : null}
