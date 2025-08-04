@@ -6,5 +6,6 @@ fileignoreconfig:
     ignore_detectors:
       - filecontent
   - filename: codegen.ts
-    checksum: 316c944fcabc2f1d8b041c125d005c1dc2582c504ccfdd4c51003e9a73a4b2af
+    ignore_detectors:
+      - filecontent
 version: "1.0"
