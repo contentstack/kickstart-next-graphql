@@ -58,4 +58,5 @@ export type GraphQLHeaders = {
   access_token: string;
   live_preview?: string;
   preview_token?: string;
+  preview_timestamp?: string;
 }
