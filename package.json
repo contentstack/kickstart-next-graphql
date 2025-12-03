@@ -26,7 +26,7 @@
     "@timbenniks/contentstack-endpoints": "^1.0.14",
     "dompurify": "^3.2.6",
     "graphql-request": "^7.2.0",
-    "next": "^15.5.4",
+    "next": "^15.5.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
