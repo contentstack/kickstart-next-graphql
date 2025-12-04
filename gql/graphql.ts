@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
+export type InputMaybe<T> = T | null | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -18,6 +18,12 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: { input: any; output: any; }
+};
+
+export type AllCompositions = {
+  __typename?: 'AllCompositions';
+  items?: Maybe<Array<Maybe<Compositions>>>;
+  total?: Maybe<Scalars['Int']['output']>;
 };
 
 export type AllPage = {
@@ -38,6 +44,432 @@ export type Block = {
   imageConnection?: Maybe<SysAssetConnection>;
   layout?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
+};
+
+export type Compositions = {
+  __typename?: 'Compositions';
+  composable_uid?: Maybe<Scalars['String']['output']>;
+  connected_content_type?: Maybe<Scalars['String']['output']>;
+  data_sources?: Maybe<Scalars['String']['output']>;
+  schema_version?: Maybe<Scalars['String']['output']>;
+  static_value?: Maybe<CompositionsStaticValue>;
+  symbolsConnection?: Maybe<CompositionsSymbolsConnection>;
+  system?: Maybe<EntrySystemField>;
+  title?: Maybe<Scalars['String']['output']>;
+  ui?: Maybe<Scalars['String']['output']>;
+  ui_previewConnection?: Maybe<SysAssetConnection>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export enum CompositionsOrderBy {
+  CreatedAtAsc = 'created_at_ASC',
+  CreatedAtDesc = 'created_at_DESC',
+  UpdatedAtAsc = 'updated_at_ASC',
+  UpdatedAtDesc = 'updated_at_DESC'
+}
+
+export type CompositionsStaticValue = {
+  __typename?: 'CompositionsStaticValue';
+  any?: Maybe<Array<Maybe<CompositionsStaticValueAny>>>;
+  array?: Maybe<Array<Maybe<CompositionsStaticValueArray>>>;
+  boolean?: Maybe<Array<Maybe<CompositionsStaticValueBoolean>>>;
+  choice?: Maybe<Array<Maybe<CompositionsStaticValueChoice>>>;
+  datestring?: Maybe<Array<Maybe<CompositionsStaticValueDatestring>>>;
+  href?: Maybe<Array<Maybe<CompositionsStaticValueHref>>>;
+  html_rte?: Maybe<Array<Maybe<CompositionsStaticValueHtmlRte>>>;
+  imageurl?: Maybe<Array<Maybe<CompositionsStaticValueImageurl>>>;
+  json_rte?: Maybe<Array<Maybe<CompositionsStaticValueJsonRte>>>;
+  number?: Maybe<Array<Maybe<CompositionsStaticValueNumber>>>;
+  object?: Maybe<Array<Maybe<CompositionsStaticValueObject>>>;
+  text?: Maybe<Array<Maybe<CompositionsStaticValueText>>>;
+  textarea?: Maybe<Array<Maybe<CompositionsStaticValueTextarea>>>;
+};
+
+export type CompositionsStaticValueAny = {
+  __typename?: 'CompositionsStaticValueAny';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueAnyWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueArray = {
+  __typename?: 'CompositionsStaticValueArray';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueArrayWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueBoolean = {
+  __typename?: 'CompositionsStaticValueBoolean';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type CompositionsStaticValueBooleanWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['Boolean']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_ne?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CompositionsStaticValueChoice = {
+  __typename?: 'CompositionsStaticValueChoice';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type CompositionsStaticValueChoiceWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueDatestring = {
+  __typename?: 'CompositionsStaticValueDatestring';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueDatestringWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueHref = {
+  __typename?: 'CompositionsStaticValueHref';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueHrefWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueHtmlRte = {
+  __typename?: 'CompositionsStaticValueHtmlRte';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueHtmlRteWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueImageurl = {
+  __typename?: 'CompositionsStaticValueImageurl';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueImageurlWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueJsonRte = {
+  __typename?: 'CompositionsStaticValueJsonRte';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueJsonRteWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueNumber = {
+  __typename?: 'CompositionsStaticValueNumber';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['Float']['output']>;
+};
+
+export type CompositionsStaticValueNumberWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['Float']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_gt?: InputMaybe<Scalars['Float']['input']>;
+  value_gte?: InputMaybe<Scalars['Float']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
+  value_lt?: InputMaybe<Scalars['Float']['input']>;
+  value_lte?: InputMaybe<Scalars['Float']['input']>;
+  value_ne?: InputMaybe<Scalars['Float']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
+};
+
+export type CompositionsStaticValueObject = {
+  __typename?: 'CompositionsStaticValueObject';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueObjectWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueText = {
+  __typename?: 'CompositionsStaticValueText';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueTextWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueTextarea = {
+  __typename?: 'CompositionsStaticValueTextarea';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompositionsStaticValueTextareaWhere = {
+  key?: InputMaybe<Scalars['String']['input']>;
+  key_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  key_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  key_ne?: InputMaybe<Scalars['String']['input']>;
+  key_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value?: InputMaybe<Scalars['String']['input']>;
+  value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  value_ne?: InputMaybe<Scalars['String']['input']>;
+  value_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CompositionsStaticValueWhere = {
+  any?: InputMaybe<CompositionsStaticValueAnyWhere>;
+  any_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  array?: InputMaybe<CompositionsStaticValueArrayWhere>;
+  array_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  boolean?: InputMaybe<CompositionsStaticValueBooleanWhere>;
+  boolean_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  choice?: InputMaybe<CompositionsStaticValueChoiceWhere>;
+  choice_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  datestring?: InputMaybe<CompositionsStaticValueDatestringWhere>;
+  datestring_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<CompositionsStaticValueHrefWhere>;
+  href_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  html_rte?: InputMaybe<CompositionsStaticValueHtmlRteWhere>;
+  html_rte_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  imageurl?: InputMaybe<CompositionsStaticValueImageurlWhere>;
+  imageurl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  json_rte?: InputMaybe<CompositionsStaticValueJsonRteWhere>;
+  json_rte_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  number?: InputMaybe<CompositionsStaticValueNumberWhere>;
+  number_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  object?: InputMaybe<CompositionsStaticValueObjectWhere>;
+  object_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  text?: InputMaybe<CompositionsStaticValueTextWhere>;
+  text_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  textarea?: InputMaybe<CompositionsStaticValueTextareaWhere>;
+  textarea_exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CompositionsSymbolsConnection = {
+  __typename?: 'CompositionsSymbolsConnection';
+  edges?: Maybe<Array<Maybe<CompositionsSymbolsEdge>>>;
+  totalCount?: Maybe<Scalars['Int']['output']>;
+};
+
+export type CompositionsSymbolsEdge = {
+  __typename?: 'CompositionsSymbolsEdge';
+  node?: Maybe<CompositionsSymbolsNode>;
+};
+
+export type CompositionsSymbolsNode = Compositions;
+
+export type CompositionsSymbolsWhere = {
+  MATCH?: InputMaybe<EvalReferenceEnum>;
+  compositions?: InputMaybe<CompositionsWhere>;
+};
+
+export type CompositionsWhere = {
+  AND?: InputMaybe<Array<InputMaybe<CompositionsWhere>>>;
+  OR?: InputMaybe<Array<InputMaybe<CompositionsWhere>>>;
+  composable_uid?: InputMaybe<Scalars['String']['input']>;
+  composable_uid_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  composable_uid_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  composable_uid_ne?: InputMaybe<Scalars['String']['input']>;
+  composable_uid_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  connected_content_type?: InputMaybe<Scalars['String']['input']>;
+  connected_content_type_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  connected_content_type_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  connected_content_type_ne?: InputMaybe<Scalars['String']['input']>;
+  connected_content_type_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  created_at?: InputMaybe<Scalars['DateTime']['input']>;
+  created_at_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  created_at_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  created_at_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  created_at_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  created_at_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  created_at_ne?: InputMaybe<Scalars['DateTime']['input']>;
+  created_at_nin?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  created_by?: InputMaybe<Scalars['String']['input']>;
+  created_by_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  created_by_ne?: InputMaybe<Scalars['String']['input']>;
+  created_by_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  data_sources?: InputMaybe<Scalars['String']['input']>;
+  data_sources_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  data_sources_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  data_sources_ne?: InputMaybe<Scalars['String']['input']>;
+  data_sources_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  locale_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  locale_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  locale_ne?: InputMaybe<Scalars['String']['input']>;
+  locale_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  publish_details?: InputMaybe<SystemPublishDetailsWhere>;
+  schema_version?: InputMaybe<Scalars['String']['input']>;
+  schema_version_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  schema_version_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  schema_version_ne?: InputMaybe<Scalars['String']['input']>;
+  schema_version_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  static_value?: InputMaybe<CompositionsStaticValueWhere>;
+  static_value_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  symbols?: InputMaybe<CompositionsSymbolsWhere>;
+  symbols_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  tags_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tags_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_ne?: InputMaybe<Scalars['String']['input']>;
+  title_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  ui?: InputMaybe<Scalars['String']['input']>;
+  ui_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  ui_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  ui_ne?: InputMaybe<Scalars['String']['input']>;
+  ui_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  ui_preview?: InputMaybe<SysAssetWhere>;
+  ui_preview_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  uid?: InputMaybe<Scalars['String']['input']>;
+  uid_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  uid_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid_ne?: InputMaybe<Scalars['String']['input']>;
+  uid_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  updated_at?: InputMaybe<Scalars['DateTime']['input']>;
+  updated_at_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  updated_at_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  updated_at_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updated_at_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  updated_at_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  updated_at_ne?: InputMaybe<Scalars['DateTime']['input']>;
+  updated_at_nin?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updated_by?: InputMaybe<Scalars['String']['input']>;
+  updated_by_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  updated_by_ne?: InputMaybe<Scalars['String']['input']>;
+  updated_by_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  url_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  url_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  url_ne?: InputMaybe<Scalars['String']['input']>;
+  url_nin?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  version?: InputMaybe<Scalars['Int']['input']>;
+  version_gt?: InputMaybe<Scalars['Int']['input']>;
+  version_gte?: InputMaybe<Scalars['Int']['input']>;
+  version_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  version_lt?: InputMaybe<Scalars['Int']['input']>;
+  version_lte?: InputMaybe<Scalars['Int']['input']>;
+  version_ne?: InputMaybe<Scalars['Int']['input']>;
+  version_nin?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
 };
 
 export type EntrySystemField = {
@@ -61,6 +493,11 @@ export type EntrySystemFieldExtensionConnectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+export enum EvalReferenceEnum {
+  All = 'ALL',
+  Any = 'ANY'
+}
 
 export type Page = {
   __typename?: 'Page';
@@ -189,8 +626,10 @@ export type PageWhere = {
 export type Query = {
   __typename?: 'Query';
   all_assets?: Maybe<AllSysAsset>;
+  all_compositions?: Maybe<AllCompositions>;
   all_page?: Maybe<AllPage>;
   assets?: Maybe<SysAsset>;
+  compositions?: Maybe<Compositions>;
   page?: Maybe<Page>;
 };
 
@@ -202,6 +641,16 @@ export type QueryAll_AssetsArgs = {
   order_by?: InputMaybe<Array<InputMaybe<SysAssetOrderBy>>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<SysAssetWhere>;
+};
+
+
+export type QueryAll_CompositionsArgs = {
+  fallback_locale?: InputMaybe<Scalars['Boolean']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: Scalars['String']['input'];
+  order_by?: InputMaybe<Array<InputMaybe<CompositionsOrderBy>>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<CompositionsWhere>;
 };
 
 
@@ -218,6 +667,13 @@ export type QueryAll_PageArgs = {
 export type QueryAssetsArgs = {
   fallback_locale?: InputMaybe<Scalars['Boolean']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
+  uid: Scalars['String']['input'];
+};
+
+
+export type QueryCompositionsArgs = {
+  fallback_locale?: InputMaybe<Scalars['Boolean']['input']>;
+  locale?: Scalars['String']['input'];
   uid: Scalars['String']['input'];
 };
 

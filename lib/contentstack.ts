@@ -7,6 +7,7 @@ import { getContentstackEndpoints, getRegionForString } from "@timbenniks/conten
 
 const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || "EU")
 const endpoints = getContentstackEndpoints(region, true)
+export const isPreview = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === "true";
 
 export const stack = contentstack.stack({
   apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
@@ -23,7 +24,7 @@ export const stack = contentstack.stack({
   host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY || endpoints && endpoints.contentDelivery,
 
   live_preview: {
-    enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
+    enable: isPreview,
     preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
     // Setting the host for live preview based on the region
     // for internal testing purposes at Contentstack we look for a custom host in the env vars, you do not have to do this.
@@ -34,7 +35,7 @@ export const stack = contentstack.stack({
 export function initLivePreview() {
   ContentstackLivePreview.init({
     ssr: false,
-    enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
+    enable: isPreview,
     mode: "builder",
     stackSdk: stack.config as IStackSdk,
     stackDetails: {
@@ -53,20 +54,19 @@ export function initLivePreview() {
   });
 }
 
-export async function getPage(url: string) {
+export async function getPage(url: string, previewTimestamp?: string) {
   const apiKey = process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY;
   const environment = process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT;
   const accessToken = process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string;
-  const preview = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW;
   const previewToken = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN as string;
   const hash = ContentstackLivePreview.hash;
 
   // Use environment variables if they exist, otherwise fall back to endpoints
   // for internal testing purposes at Contentstack we look for a custom host in the env vars, you do not have to do this.
-  const graphqlUrl = process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY || endpoints.graphql;
+  const graphqlUrl = process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY || endpoints.graphqlDelivery;
   const graphqlPreviewUrl = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST || endpoints.graphqlPreview;
 
-  const baseURL = preview === 'true' && hash ? graphqlPreviewUrl : graphqlUrl
+  const baseURL = isPreview && hash ? graphqlPreviewUrl : graphqlUrl
 
   const headers: GraphQLHeaders = {
     access_token: accessToken
@@ -75,6 +75,7 @@ export async function getPage(url: string) {
   if (hash) {
     headers.live_preview = hash;
     headers.preview_token = previewToken
+    headers.preview_timestamp = previewTimestamp;
   }
 
   const gqEndpoint = `https://${baseURL}/stacks/${apiKey}?environment=${environment}`;
@@ -152,7 +153,7 @@ export async function getPage(url: string) {
 
   const entry = fixedEntryForEditableTags;
 
-  if (process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true') {
+  if (isPreview) {
     entry && contentstack.Utils.addEditableTags(entry as Page, 'page', true);
   }
 
