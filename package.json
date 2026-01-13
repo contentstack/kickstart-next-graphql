@@ -1,6 +1,6 @@
 {
   "name": "kickstart-next-graphql",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^4.10.5",
+    "@contentstack/delivery-sdk": "^4.10.6",
     "@contentstack/live-preview-utils": "^4.2.0",
     "@graphql-codegen/cli": "^6.1.1",
     "@graphql-codegen/client-preset": "^5.2.2",
