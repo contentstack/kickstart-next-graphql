@@ -18,17 +18,17 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^4.10.6",
-    "@contentstack/live-preview-utils": "^4.2.0",
+    "@contentstack/delivery-sdk": "^4.11.0",
+    "@contentstack/live-preview-utils": "^4.2.1",
     "@graphql-codegen/cli": "^6.1.1",
     "@graphql-codegen/client-preset": "^5.2.2",
     "@graphql-codegen/typescript": "^5.0.7",
     "@timbenniks/contentstack-endpoints": "^2.1.0",
     "graphql-request": "^7.4.0",
     "isomorphic-dompurify": "^2.35.0",
-    "next": "^16.1.1",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
