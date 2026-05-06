@@ -1,6 +1,6 @@
 {
   "name": "kickstart-next-graphql",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "private": false,
   "repository": {
     "type": "git",
@@ -29,6 +29,9 @@
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
+  },
+  "overrides": {
+    "postcss": "8.5.14"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
