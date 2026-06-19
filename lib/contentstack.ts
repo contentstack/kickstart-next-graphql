@@ -5,7 +5,7 @@ import { GraphQLClient } from "graphql-request";
 import { graphql } from "../gql"
 import { getContentstackEndpoint, type ContentstackEndpoints } from "@contentstack/utils";
 
-const endpoints = getContentstackEndpoint(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || 'us', '', true) as ContentstackEndpoints
+const endpoints = getContentstackEndpoint(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || 'NA', '', true) as ContentstackEndpoints
 export const isPreview = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === "true";
 
 export const stack = contentstack.stack({
