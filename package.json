@@ -20,7 +20,7 @@
   "dependencies": {
     "@contentstack/delivery-sdk": "^5.2.1",
     "@contentstack/live-preview-utils": "^4.4.4",
-    "@graphql-codegen/cli": "^6.3.1",
+    "@graphql-codegen/cli": "^7.1.0",
     "@graphql-codegen/client-preset": "^5.3.0",
     "@graphql-codegen/typescript": "^5.0.10",
     "@timbenniks/contentstack-endpoints": "^2.1.0",
