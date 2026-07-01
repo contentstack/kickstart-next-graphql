@@ -5,6 +5,8 @@ fileignoreconfig:
   - filename: package-lock.json
     ignore_detectors:
       - filecontent
+  - filename: .env.example
+    checksum: ef57d6a0a873dec7fd69ef9e53fa9af855e020fdc85d3816abaad9e44289744b
   - filename: codegen.ts
     ignore_detectors:
       - filecontent
